@@ -4,14 +4,14 @@ from django.contrib.auth.models import User
 from chat_room.models import Room, Chat
 
 class UserSerializers(serializers.ModelSerializer):
-	'''serializers for user model'''
+	'''Serializers for user model'''
 
 	class Meta:
 		model = User
 		fields = ('id', 'username')
 
 class RoomSerializers(serializers.ModelSerializer):
-	"""serializer for chat model data"""
+	"""Serializer for chat model data"""
 
 	creater = UserSerializers()
 	invited = UserSerializers(many=True)
@@ -25,11 +25,11 @@ class ChatSerializers(serializers.ModelSerializer):
 	user = UserSerializers()
 	class Meta:
 		model = Chat
-		fields =  ('user', 'text', 'date')
+		fields = ('user', 'text', 'date')
 
 
 class ChatPostSerializers(serializers.ModelSerializer):
 
 	class Meta:
 		model = Chat
-		fields =  ('room','text')
+		fields = ('room', 'text')
